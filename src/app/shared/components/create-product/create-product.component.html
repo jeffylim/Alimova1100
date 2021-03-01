@@ -1,0 +1,98 @@
+<button class="btn btn-primary btn-custom" (click)="openModal(mymodal)">
+  <span class="material-icons"> add </span>
+</button>
+<ng-template #mymodal let-modal>
+  <div class="modal-header">
+    <h2 class="modal-title" id="modal-basic-title">Добавить товар</h2>
+    <button
+      type="button"
+      class="close"
+      aria-label="Close"
+      (click)="modal.dismiss('Cross click')"
+    >
+      <span aria-hidden="true">×</span>
+    </button>
+  </div>
+  <div class="modal-body">
+    <form [formGroup]="addFormGroup">
+      <div class="mb-2">
+        <label for="title" class="form-label">Название</label>
+        <input
+          type="text"
+          formControlName="title"
+          class="form-control form-control-sm"
+          id="title"
+          placeholder="Шкаф"
+        />
+      </div>
+      <div class="mb-2">
+        <label for="articulation" class="form-label">Артикул</label>
+        <input
+          type="text"
+          formControlName="articulation"
+          class="form-control form-control-sm"
+          id="articulation"
+          placeholder="asd576"
+        />
+      </div>
+      <div class="mb-2">
+        <label for="price" class="form-label">Цена</label>
+        <input
+          type="text"
+          formControlName="price"
+          class="form-control form-control-sm"
+          id="price"
+        />
+      </div>
+      <div class="mb-2">
+        <label for="madedBy">Производитель</label>
+        <input
+          type="text"
+          formControlName="madedBy"
+          class="form-control form-control-sm"
+          id="madedBy"
+        />
+      </div>
+      <div class="mb-3">
+        <label for="weight" class="form-label">Вес</label>
+        <input
+          type="text"
+          formControlName="weight"
+          class="form-control form-control-sm"
+          id="weight"
+        />
+      </div>
+      <div class="mb-3">
+        <label for="count" class="form-label">Количество</label>
+        <input
+          formControlName="count"
+          class="form-control-sm form-control"
+          id="count"
+        />
+      </div>
+      <div>
+        <label for="category" class="form-label">Категория</label>
+        <select
+          class="custom-select custom-select-sm"
+          id="category"
+          formControlName="category"
+        >
+          <option [ngValue]="type.Furniture">Мебель</option>
+          <option [ngValue]="type.Technic">Техника</option>
+          <option [ngValue]="type.Books">Книги</option>
+          <option [ngValue]="type.Phones">Телефоны</option>
+        </select>
+      </div>
+    </form>
+  </div>
+  <div class="modal-footer">
+    <button
+      type="button"
+      [disabled]="addFormGroup.invalid"
+      class="btn btn-success btn-sm"
+      (click)="addProduct(modal)"
+    >
+      Добавить
+    </button>
+  </div>
+</ng-template>
